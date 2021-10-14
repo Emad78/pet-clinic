@@ -18,18 +18,34 @@ public class PetServiceTest {
 
 	public Pet expected;
 	public PetService petService;
+	private Owner john;
+	private Pet garfield;
+	private Pet odie;
 
-	public PetServiceTest( int petId){
-		String petName = "hi";
+	@Before
+	public void setup(){
+		john = new Owner();
+
+		garfield = new Pet();
+		garfield.setName("garfield");
+
+		odie = new Pet();
+		odie.setName("odie");
+
+	}
+
+	public PetServiceTest(String name, Integer petId){
 		Pet pet = new Pet();
+		pet.setName(name);
 		pet.setId(petId);
-		pet.setName(petName);
+		pet.setName(name);
 		Owner owner = new Owner();
 		petService.savePet(pet, owner);
 		expected = pet;
 	}
-	@Parameterized.Parameters
-	public static Collection<Object[]> parameters(){return Arrays.asList(new Object[][]{{1}, {2}});
+
+	@Parameters
+	public static Collection<Object[]> parameters(){return Arrays.asList(new Object[][]{{"garfield", 1}, {"odie", 2}});
 	}
 	@Test public void findPetTest(){
 		assertEquals(expected, petService.findPet(expected.getId()));
