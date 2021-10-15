@@ -1,12 +1,10 @@
 package org.springframework.samples.petclinic.owner;
 
-import static org.hamcrest.CoreMatchers.*;
-
-import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -64,7 +62,9 @@ class OwnerTest {
 	void testGetPets() {
 		john.addPet(garfield);
 		john.addPet(odie);
-		MatcherAssert.assertThat(john.getPets(), is(Arrays.asList(garfield, odie)));
+		List<Pet> expected = Arrays.asList(odie, garfield);
+		List<Pet> result = john.getPets();
+		assertTrue(result.containsAll(expected) && expected.containsAll(result) && expected.size() == result.size());
 	}
 
 }
