@@ -2,13 +2,15 @@ package org.springframework.samples.petclinic.owner;
 
 import org.hibernate.annotations.Parameter;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.springframework.samples.petclinic.utility.SimpleDI;
-
+import org.springframework.boot.test.mock.mockito.MockBean;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -16,39 +18,49 @@ import static org.junit.jupiter.api.Assertions.*;
 @RunWith(Parameterized.class)
 public class PetServiceTest {
 
-	public Pet expected;
-	public PetService petService;
-	private Owner john;
-	private Pet garfield;
-	private Pet odie;
+	private Pet expected;
+	private final PetService petService;
+	private static Pet garfield;
+	private static Pet odie;
+	private static Pet tom;
+	private static Pet jeri;
+	private int expectedId;
 
-	@Before
-	public void setup(){
-		john = new Owner();
-
-		garfield = new Pet();
-		garfield.setName("garfield");
-
-		odie = new Pet();
-		odie.setName("odie");
-
-	}
-
-	public PetServiceTest(String name, Integer petId){
-		Pet pet = new Pet();
-		pet.setName(name);
-		pet.setId(petId);
-		pet.setName(name);
-		Owner owner = new Owner();
-		petService.savePet(pet, owner);
+	public PetServiceTest(Pet pet, int id){
+		petService = mock(PetService.class);
 		expected = pet;
+		expectedId = id;
 	}
 
 	@Parameters
-	public static Collection<Object[]> parameters(){return Arrays.asList(new Object[][]{{"garfield", 1}, {"odie", 2}});
+	public static Collection<Object[]> parameters(){
+
+		garfield = new Pet();
+		garfield.setName("garfield");
+		garfield.setId(1);
+
+		odie = new Pet();
+		odie.setName("odie");
+		odie.setId(2);
+
+		tom = new Pet();
+		tom.setName("tom");
+		tom.setId(3);
+
+		jeri = new Pet();
+		jeri.setName("jeri");
+		jeri.setId(4);
+
+		return Arrays.asList(new Object[][]{{garfield, 1}, {odie, 2}, {tom, 3}, {jeri, 4}});
 	}
-	@Test public void findPetTest(){
-		assertEquals(expected, petService.findPet(expected.getId()));
+	@Test
+	public void findPetTest(){
+		when(petService.findPet(1)).thenReturn(garfield);
+		when(petService.findPet(2)).thenReturn(odie);
+		when(petService.findPet(3)).thenReturn(tom);
+		when(petService.findPet(4)).thenReturn(jeri);
+
+		assertEquals(expected, petService.findPet(expectedId));
 	}
 
 }
