@@ -5,6 +5,7 @@ import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
+import static org.junit.Assume.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,6 +27,8 @@ public class OwnerTheoriesTest {
 	public static String[] petNames = {"garfield", "odie"};
 
 	@Theory public void getPetTest(String name, String petName){
+		assumeTrue(name != null);
+		assumeTrue(petName != null);
 		this.owner.setFirstName(name);
 		this.pet.setName(petName);
 		this.owner.addPet(this.pet);

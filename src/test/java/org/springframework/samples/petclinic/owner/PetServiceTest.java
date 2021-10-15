@@ -9,6 +9,9 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.springframework.samples.petclinic.utility.SimpleDI;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import static org.junit.Assume.*;
+
+import static org.junit.Assume.assumeFalse;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import java.util.Arrays;
@@ -59,7 +62,8 @@ public class PetServiceTest {
 		when(petService.findPet(2)).thenReturn(odie);
 		when(petService.findPet(3)).thenReturn(tom);
 		when(petService.findPet(4)).thenReturn(jeri);
-
+		assumeTrue(expected != null);
+		assumeTrue(expectedId >= 0);
 		assertEquals(expected, petService.findPet(expectedId));
 	}
 
