@@ -30,7 +30,7 @@ class SimplePriceCalculatorTests {
 	}
 
 	@Test
-	public void calcPriceEdgeCover_path1() {
+	public void calcPrice_UserGoldType() {
 		double totalPrice;
 		SimplePriceCalculator priceCalculator = new SimplePriceCalculator();
 		totalPrice = priceCalculator.calcPrice(this.pets, this.baseCharge, this.basePricePerPet, UserType.GOLD);
@@ -38,7 +38,7 @@ class SimplePriceCalculatorTests {
 	}
 
 	@Test
-	public void calcPriceEdgeCover_path2() {
+	public void calcPrice_UserNewType() {
 		Pet pet1 = mock(Pet.class);
 		Pet pet2 = mock(Pet.class);
 		PetType petType1 = mock(PetType.class);
