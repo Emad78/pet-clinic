@@ -16,7 +16,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-class SimplePriceCalculatorTests {
+class SimplePriceCalculatorTests_GraphModel {
 
 	private List<Pet> pets;
 	private double baseCharge;
@@ -57,3 +57,4 @@ class SimplePriceCalculatorTests {
 	}
 
 }
+

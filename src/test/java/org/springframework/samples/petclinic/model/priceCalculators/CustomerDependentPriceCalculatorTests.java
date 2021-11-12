@@ -11,12 +11,12 @@ import org.springframework.samples.petclinic.model.UserType;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-class SimplePriceCalculatorTests {
+public class CustomerDependentPriceCalculatorTests {
 
 	private List<Pet> pets;
 	private double baseCharge;
@@ -51,8 +51,8 @@ class SimplePriceCalculatorTests {
 		pets.add(pet2);
 		double totalPrice, expected;
 		expected = (this.baseCharge + this.basePricePerPet * 1.2 + this.basePricePerPet) * UserType.NEW.discountRate;
-		SimplePriceCalculator priceCalculator = new SimplePriceCalculator();
-		totalPrice = priceCalculator.calcPrice(this.pets, this.baseCharge, this.basePricePerPet, UserType.NEW);
+		CustomerDependentPriceCalculator customerDependentPriceCalculator = new CustomerDependentPriceCalculator();
+		totalPrice = customerDependentPriceCalculator.calcPrice(this.pets, this.baseCharge, this.basePricePerPet, UserType.NEW);
 		assertEquals(expected, totalPrice);
 	}
 
