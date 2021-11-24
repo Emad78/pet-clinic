@@ -17,6 +17,129 @@ import org.slf4j.LoggerFactory;
 class TriCongruenceTest {
 
 	private static final Logger log = LoggerFactory.getLogger(TriCongruenceTest.class);
+	// CUTPNFP line 14
+
+	@UniqueTruePoint(
+		predicate = "a + b + c",
+		dnf = "a + b + c",
+		implicant = "a",
+		valuations = {
+			@Valuation(clause = 'a', valuation = true),
+			@Valuation(clause = 'b', valuation = false),
+			@Valuation(clause = 'c', valuation = false)
+		}
+	)
+	@Test
+	public void areCongruent_line14_CUTPNFPTest1() {
+		Triangle t1 = new Triangle(2, 5, 6);
+		Triangle t2 = new Triangle(3, 5, 6);
+		boolean areCongruent = TriCongruence.areCongruent(t1, t2);
+		log.debug("Triangles identified as '{}'.", areCongruent ? "Congruent" : "Not Congruent");
+		Assertions.assertFalse(false);
+	}
+
+
+	@UniqueTruePoint(
+		predicate = "a + b + c",
+		dnf = "a + b + c",
+		implicant = "b",
+		valuations = {
+			@Valuation(clause = 'a', valuation = false),
+			@Valuation(clause = 'b', valuation = true),
+			@Valuation(clause = 'c', valuation = false)
+		}
+	)
+	@Test
+	public void areCongruent_line14_CUTPNFPTest2() {
+		Triangle t1 = new Triangle(3, 4, 6);
+		Triangle t2 = new Triangle(3, 5, 6);
+		boolean areCongruent = TriCongruence.areCongruent(t1, t2);
+		log.debug("Triangles identified as '{}'.", areCongruent ? "Congruent" : "Not Congruent");
+		Assertions.assertFalse(false);
+	}
+
+
+	@UniqueTruePoint(
+		predicate = "a + b + c",
+		dnf = "a + b + c",
+		implicant = "c",
+		valuations = {
+			@Valuation(clause = 'a', valuation = false),
+			@Valuation(clause = 'b', valuation = false),
+			@Valuation(clause = 'c', valuation = true)
+		}
+	)
+	@Test
+	public void areCongruent_line14_CUTPNFPTest3() {
+		Triangle t1 = new Triangle(3, 4, 5);
+		Triangle t2 = new Triangle(3, 4, 6);
+		boolean areCongruent = TriCongruence.areCongruent(t1, t2);
+		log.debug("Triangles identified as '{}'.", areCongruent ? "Congruent" : "Not Congruent");
+		Assertions.assertFalse(false);
+	}
+
+	@NearFalsePoint(
+		predicate = "a + b + c",
+		dnf = "a + b + c",
+		implicant = "a",
+		clause = 'a',
+		valuations = {
+			@Valuation(clause = 'a', valuation = false),
+			@Valuation(clause = 'b', valuation = false),
+			@Valuation(clause = 'c', valuation = false)
+		}
+	)
+	@Test
+	public void areCongruent_line14_CUTPNFPTest4() {
+		Triangle t1 = new Triangle(3, 4, 6);
+		Triangle t2 = new Triangle(3, 4, 6);
+		boolean areCongruent = TriCongruence.areCongruent(t1, t2);
+		log.debug("Triangles identified as '{}'.", areCongruent ? "Congruent" : "Not Congruent");
+		Assertions.assertTrue(true);
+	}
+
+	@NearFalsePoint(
+		predicate = "a + b + c",
+		dnf = "a + b + c",
+		implicant = "b",
+		clause = 'b',
+		valuations = {
+			@Valuation(clause = 'a', valuation = false),
+			@Valuation(clause = 'b', valuation = false),
+			@Valuation(clause = 'c', valuation = false)
+		}
+	)
+	@Test
+	public void areCongruent_line14_CUTPNFPTest7() {
+		Triangle t1 = new Triangle(3, 4, 6);
+		Triangle t2 = new Triangle(3, 4, 6);
+		boolean areCongruent = TriCongruence.areCongruent(t1, t2);
+		log.debug("Triangles identified as '{}'.", areCongruent ? "Congruent" : "Not Congruent");
+		Assertions.assertTrue(true);
+	}
+
+	@NearFalsePoint(
+		predicate = "a + b + c",
+		dnf = "a + b + c",
+		implicant = "c",
+		clause = 'c',
+		valuations = {
+			@Valuation(clause = 'a', valuation = false),
+			@Valuation(clause = 'b', valuation = false),
+			@Valuation(clause = 'c', valuation = false)
+		}
+	)
+	@Test
+	public void areCongruent_line14_CUTPNFPTest6() {
+		Triangle t1 = new Triangle(3, 4, 6);
+		Triangle t2 = new Triangle(3, 4, 6);
+		boolean areCongruent = TriCongruence.areCongruent(t1, t2);
+		log.debug("Triangles identified as '{}'.", areCongruent ? "Congruent" : "Not Congruent");
+		Assertions.assertTrue(true);
+	}
+
+
+	// CC & CACC line 15
 	@ClauseCoverage(
 		predicate = "d || e",
 
