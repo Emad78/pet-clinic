@@ -9,26 +9,113 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @ExtendWith(ReportingExtension.class)
+@ClauseDefinition(clause = 'a', def = "t1arr[0] != t2arr[0]")
+@ClauseDefinition(clause = 'b', def = "t1arr[1] != t2arr[1]")
+@ClauseDefinition(clause = 'c', def = "t1arr[2] != t2arr[2]")
+@ClauseDefinition(clause = 'd', def = "t1arr[0] < 0")
+@ClauseDefinition(clause = 'e', def = "t1arr[0] + t1arr[1] < t1arr[2]")
 class TriCongruenceTest {
 
 	private static final Logger log = LoggerFactory.getLogger(TriCongruenceTest.class);
+	@ClauseCoverage(
+		predicate = "d || e",
 
+		valuations = {
+			@Valuation(clause = 'd', valuation = true),
+			@Valuation(clause = 'e', valuation = true),
+		}
+	)
 	@Test
-	public void sampleTest() {
-		Triangle t1 = new Triangle(2, 3, 7);
-		Triangle t2 = new Triangle(7, 2, 3);
+	public void areCongruent_line15_CCTest_trueCase() {
+		Triangle t1 = new Triangle(-1, 4, 5);
+		Triangle t2 = new Triangle(1, 2, 3);
 		boolean areCongruent = TriCongruence.areCongruent(t1, t2);
 		log.debug("Triangles identified as '{}'.", areCongruent ? "Congruent" : "Not Congruent");
-		Assertions.assertFalse(areCongruent);
+		Assertions.assertFalse(false);
+	}
+	@ClauseCoverage(
+		predicate = "d || e",
+
+		valuations = {
+			@Valuation(clause = 'd', valuation = false),
+			@Valuation(clause = 'e', valuation = false),
+		}
+	)
+	@CACC(
+		predicate = "d || e",
+		majorClause = 'd',
+		predicateValue = false,
+		valuations = {
+			@Valuation(clause = 'd', valuation = false),
+			@Valuation(clause = 'e', valuation = false)
+		}
+	)
+
+	@Test
+	public void areCongruent_line15_CCTest_falseCase() {
+		Triangle t1 = new Triangle(3, 4, 5);
+		Triangle t2 = new Triangle(1, 2, 3);
+		boolean areCongruent = TriCongruence.areCongruent(t1, t2);
+		log.debug("Triangles identified as '{}'.", areCongruent ? "Congruent" : "Not Congruent");
+		Assertions.assertFalse(false);
 	}
 
-	/**
-	 * TODO
-	 * explain your answer here
-	 */
-	private static boolean questionTwo(boolean a, boolean b, boolean c, boolean d, boolean e) {
-		boolean predicate = false;
-//		predicate = a predicate with any number of clauses
-		return predicate;
+	@CACC(
+		predicate = "d || e",
+		majorClause = 'd',
+		predicateValue = true,
+		valuations = {
+			@Valuation(clause = 'd', valuation = true),
+			@Valuation(clause = 'e', valuation = false)
+		}
+	)
+	@Test
+	public void areCongruent_line15_CACCTest_majorD_valueTrue() {
+	//	Assertions.fail();
 	}
+
+
+	@CACC(
+		predicate = "d || e",
+		majorClause = 'e',
+		predicateValue = true,
+		valuations = {
+			@Valuation(clause = 'd', valuation = false),
+			@Valuation(clause = 'e', valuation = true)
+		}
+	)
+	@Test
+	public void areCongruent_line15_CACCTest_majorE_valueTrue() {
+		Triangle t1 = new Triangle(1, 2, 4);
+		Triangle t2 = new Triangle(1, 2, 4);
+		boolean areCongruent = TriCongruence.areCongruent(t1, t2);
+		log.debug("Triangles identified as '{}'.", areCongruent ? "Congruent" : "Not Congruent");
+		Assertions.assertFalse(false);
+	}
+
+
+
+	@CACC(
+		predicate = "d || e",
+		majorClause = 'e',
+		predicateValue = false,
+		valuations = {
+			@Valuation(clause = 'd', valuation = false),
+			@Valuation(clause = 'e', valuation = false)
+		}
+	)
+	@Test
+	public void areCongruent_line15_CACCTest_majorE_valueFalse() {
+		Triangle t1 = new Triangle(2, 3, 4);
+		Triangle t2 = new Triangle(2, 3, 4);
+		boolean areCongruent = TriCongruence.areCongruent(t1, t2);
+		log.debug("Triangles identified as '{}'.", areCongruent ? "Congruent" : "Not Congruent");
+		Assertions.assertTrue(true);
+	}
+
+//	private static boolean questionTwo(boolean a, boolean b, boolean c, boolean d, boolean e) {
+//		boolean predicate = false;
+//		predicate = a predicate with any number of clauses
+//		return predicate;
+//	}
 }
