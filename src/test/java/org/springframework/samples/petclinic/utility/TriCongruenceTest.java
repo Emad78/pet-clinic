@@ -235,10 +235,23 @@ class TriCongruenceTest {
 		log.debug("Triangles identified as '{}'.", areCongruent ? "Congruent" : "Not Congruent");
 		Assertions.assertTrue(true);
 	}
+@Test
+	public void questionTwo() {
+/*
+	از مثال نقض برای نشان دادن خواسته سوال استفاده کردیم. عبارت ab + cd را در نظر گرفتیم و
+	مجموعه حالت‌ها به ازای CUTPNFP را بدست آوردیم و نشان دادیم این حالت ها نمی‌توانند خواسته UTPC را
+	پوشش دهند. پس CUTPNFP نمی‌تواند UTPC را پوشش دهد.
+	f = ab + cd ---> implicants = {ab, cd, ~a~d, ~a~c, ~b~c, ~b~d}
+	CUTPNFP set = {TTFF, FFTT, TFFF, FTFF, FFTF, FFFT}
+	TTFF --> ab = T , cd = F , ~a~d = F , ~a~c = F , ~b~c = F , ~b~d = F --> can use for ab
+	FFTT --> ab = F , cd = T , ~a~d = F , ~a~c = F , ~b~c = F , ~b~d = F --> can use for cd
+	TFFF --> ab = F , cd = F , ~a~d = F , ~a~c = F , ~b~c = T , ~b~d = T --> can't use
+	FTFF --> ab = F , cd = F , ~a~d = T , ~a~c = T , ~b~c = F , ~b~d = F --> can't use
+	FFTF --> ab = F , cd = F , ~a~d = T , ~a~c = F , ~b~c = F , ~b~d = T --> can't use
+	FFFT --> ab = F , cd = F , ~a~d = F , ~a~c = T , ~b~c = T , ~b~d = F --> can't use
 
-//	private static boolean questionTwo(boolean a, boolean b, boolean c, boolean d, boolean e) {
-//		boolean predicate = false;
-//		predicate = a predicate with any number of clauses
-//		return predicate;
-//	}
+	---->> CUTPNFP doesn't subsume UTPC
+*/
+	Assertions.assertTrue(true);
+	}
 }
