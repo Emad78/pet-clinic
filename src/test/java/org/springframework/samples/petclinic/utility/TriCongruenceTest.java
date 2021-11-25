@@ -254,6 +254,5 @@ class TriCongruenceTest {
 
 	public void questionTwo(boolean a, boolean b, boolean c, boolean d) {
 		boolean predicate = a&b | c&d;
-		Assertions.assertTrue(true);
 	}
 }
