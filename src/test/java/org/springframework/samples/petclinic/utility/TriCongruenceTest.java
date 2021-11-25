@@ -235,11 +235,10 @@ class TriCongruenceTest {
 		log.debug("Triangles identified as '{}'.", areCongruent ? "Congruent" : "Not Congruent");
 		Assertions.assertTrue(areCongruent);
 	}
-@Test
-	public void questionTwo() {
-/*
+
+	/*
 	از مثال نقض برای نشان دادن خواسته سوال استفاده کردیم. عبارت ab + cd را در نظر گرفتیم و
-	مجموعه حالت‌ها به ازای CUTPNFP را بدست آوردیم و نشان دادیم این حالت ها نمی‌توانند خواسته UTPC را
+	مجموعه حالت‌ها را به ازای CUTPNFP بدست آوردیم و نشان دادیم این حالت ها نمی‌توانند خواسته UTPC را
 	پوشش دهند. پس CUTPNFP نمی‌تواند UTPC را پوشش دهد.
 	f = ab + cd ---> implicants = {ab, cd, ~a~d, ~a~c, ~b~c, ~b~d}
 	CUTPNFP set = {TTFF, FFTT, TFFF, FTFF, FFTF, FFFT}
@@ -252,6 +251,9 @@ class TriCongruenceTest {
 
 	---->> CUTPNFP doesn't subsume UTPC
 */
-	Assertions.assertTrue(true);
+
+	public void questionTwo(boolean a, boolean b, boolean c, boolean d) {
+		boolean predicate = a&b | c&d;
+		Assertions.assertTrue(true);
 	}
 }
