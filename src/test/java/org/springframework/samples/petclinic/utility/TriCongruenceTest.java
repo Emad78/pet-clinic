@@ -35,7 +35,7 @@ class TriCongruenceTest {
 		Triangle t2 = new Triangle(3, 5, 6);
 		boolean areCongruent = TriCongruence.areCongruent(t1, t2);
 		log.debug("Triangles identified as '{}'.", areCongruent ? "Congruent" : "Not Congruent");
-		Assertions.assertFalse(false);
+		Assertions.assertFalse(areCongruent);
 	}
 
 
@@ -55,7 +55,7 @@ class TriCongruenceTest {
 		Triangle t2 = new Triangle(3, 5, 6);
 		boolean areCongruent = TriCongruence.areCongruent(t1, t2);
 		log.debug("Triangles identified as '{}'.", areCongruent ? "Congruent" : "Not Congruent");
-		Assertions.assertFalse(false);
+		Assertions.assertFalse(areCongruent);
 	}
 
 
@@ -75,7 +75,7 @@ class TriCongruenceTest {
 		Triangle t2 = new Triangle(3, 4, 6);
 		boolean areCongruent = TriCongruence.areCongruent(t1, t2);
 		log.debug("Triangles identified as '{}'.", areCongruent ? "Congruent" : "Not Congruent");
-		Assertions.assertFalse(false);
+		Assertions.assertFalse(areCongruent);
 	}
 
 	@NearFalsePoint(
@@ -95,7 +95,7 @@ class TriCongruenceTest {
 		Triangle t2 = new Triangle(3, 4, 6);
 		boolean areCongruent = TriCongruence.areCongruent(t1, t2);
 		log.debug("Triangles identified as '{}'.", areCongruent ? "Congruent" : "Not Congruent");
-		Assertions.assertTrue(true);
+		Assertions.assertTrue(areCongruent);
 	}
 
 	@NearFalsePoint(
@@ -115,7 +115,7 @@ class TriCongruenceTest {
 		Triangle t2 = new Triangle(3, 4, 6);
 		boolean areCongruent = TriCongruence.areCongruent(t1, t2);
 		log.debug("Triangles identified as '{}'.", areCongruent ? "Congruent" : "Not Congruent");
-		Assertions.assertTrue(true);
+		Assertions.assertTrue(areCongruent);
 	}
 
 	@NearFalsePoint(
@@ -135,7 +135,7 @@ class TriCongruenceTest {
 		Triangle t2 = new Triangle(3, 4, 6);
 		boolean areCongruent = TriCongruence.areCongruent(t1, t2);
 		log.debug("Triangles identified as '{}'.", areCongruent ? "Congruent" : "Not Congruent");
-		Assertions.assertTrue(true);
+		Assertions.assertTrue(areCongruent);
 	}
 
 
@@ -154,7 +154,7 @@ class TriCongruenceTest {
 		Triangle t2 = new Triangle(1, 2, 3);
 		boolean areCongruent = TriCongruence.areCongruent(t1, t2);
 		log.debug("Triangles identified as '{}'.", areCongruent ? "Congruent" : "Not Congruent");
-		Assertions.assertFalse(false);
+		Assertions.assertFalse(areCongruent);
 	}
 	@ClauseCoverage(
 		predicate = "d || e",
@@ -180,7 +180,7 @@ class TriCongruenceTest {
 		Triangle t2 = new Triangle(1, 2, 3);
 		boolean areCongruent = TriCongruence.areCongruent(t1, t2);
 		log.debug("Triangles identified as '{}'.", areCongruent ? "Congruent" : "Not Congruent");
-		Assertions.assertFalse(false);
+		Assertions.assertFalse(areCongruent);
 	}
 
 	@CACC(
@@ -213,7 +213,7 @@ class TriCongruenceTest {
 		Triangle t2 = new Triangle(1, 2, 4);
 		boolean areCongruent = TriCongruence.areCongruent(t1, t2);
 		log.debug("Triangles identified as '{}'.", areCongruent ? "Congruent" : "Not Congruent");
-		Assertions.assertFalse(false);
+		Assertions.assertFalse(areCongruent);
 	}
 
 
@@ -233,7 +233,7 @@ class TriCongruenceTest {
 		Triangle t2 = new Triangle(2, 3, 4);
 		boolean areCongruent = TriCongruence.areCongruent(t1, t2);
 		log.debug("Triangles identified as '{}'.", areCongruent ? "Congruent" : "Not Congruent");
-		Assertions.assertTrue(true);
+		Assertions.assertTrue(areCongruent);
 	}
 @Test
 	public void questionTwo() {
